@@ -22,16 +22,16 @@ flask
 
 [4] Create a Python script app.py file and add these code to the file.
 
-from flask import Flask
+    from flask import Flask
 
-app = Flask(__name__)
+    app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello from Dockerized Flask App!!"
+    @app.route("/")
+    def hello():
+        return "Hello from Dockerized Flask App!!"
 
-if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0')
+    if __name__ == "__main__":
+        app.run(debug=True,host='0.0.0.0')
 
 [5] Create a Docker file Dockerfile without any file extension and add these lines to the file.
 
