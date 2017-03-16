@@ -29,13 +29,21 @@ def get_config_file(filename):
 			for keys,values in d.items():
 				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
 
-		except:
+	except:
 		finalString = "Can not find the file or Repository" 
 			
 	return finalString
 	
 if __name__ == "__main__":
 	   app.run(debug=True,host='0.0.0.0')
+
+
+
+
+
+
+
+
 
 
 
