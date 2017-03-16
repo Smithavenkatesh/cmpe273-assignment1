@@ -1,0 +1,6 @@
+To open in Web Browser,give the file name after the port number.
+	Example: http://0.0.0.0:5000/dev-config.yml
+
+URL for Config files: https://github.com/Smithavenkatesh/cmpe273-assignment1-config
+
+
