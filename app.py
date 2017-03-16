@@ -24,15 +24,12 @@ def get_config_file(filename):
 			for keys,values in d.items():
 				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
 
-		elif(filename.endswith(".json")):
+		else:
 			d = json.loads(decodedContent)
 			for keys,values in d.items():
 				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
 
-		else:
-			finalString = "File not found with .yml or .json extension"
-
-	except:
+		except:
 		finalString = "Can not find the file or Repository" 
 			
 	return finalString
