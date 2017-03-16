@@ -12,7 +12,7 @@ d={}
 app = Flask(__name__)
 
 
-@app.route('/<filename>')
+@app.route('/v1/<filename>')
 def get_config_file(filename):
 	try:
 		repo = Github().get_user(username).get_repo(given_repo)
@@ -22,12 +22,12 @@ def get_config_file(filename):
 		if(filename.endswith(".yml")):
 			d = yaml.load(decodedContent)#converts the string decodedContent to Dictionary d
 			for keys,values in d.items():
-				finalString = str(finalString)+"<br/>"+str(keys)+" - "+str(values)
+				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
 
 		elif(filename.endswith(".json")):
 			d = json.loads(decodedContent)
 			for keys,values in d.items():
-				finalString = str(finalString)+"<br/>"+str(keys)+" - "+str(values)
+				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
 
 		else:
 			finalString = "File not found with .yml or .json extension"
