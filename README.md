@@ -35,22 +35,22 @@ flask
 
 [5] Create a Docker file Dockerfile without any file extension and add these lines to the file.
 
-FROM python:2.7.13
-MAINTAINER Your Name "yourname@gmail.com"
-COPY . /app
-WORKDIR /app
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+    FROM python:2.7.13
+    MAINTAINER Your Name "yourname@gmail.com"
+    COPY . /app
+    WORKDIR /app
+    RUN pip install -r requirements.txt
+    ENTRYPOINT ["python"]
+    CMD ["app.py"]
 
 [6] Run this command inside the cmpe273-assignment1 working directory. Make sure you have all these files in the current directory: Dockerfile, app.py, and requirements.txt
-docker build -t assignment1-flask-app:latest .
+    docker build -t assignment1-flask-app:latest .
 
 [7] Run this Docker command to list all images.
-docker images
+    docker images
 
 [8] Run the Docker container using the image you created in the previous step.
-docker run -d -p 5000:5000 assignment1-flask-app
+    docker run -d -p 5000:5000 assignment1-flask-app
 
 [9] Lookup IP of the assignment1-flask-app container.
 docker-machine ls
@@ -70,31 +70,31 @@ II - Build a sample application that pulls configuration from a Github repo.
 Integrate with Github to pull application configuration from a config repo which has a set of YML files with {environment}-config.yml format.
 YAML Type Example
 
-curl http://0.0.0.0:5000/v1/dev-config.yml
+    curl http://0.0.0.0:5000/v1/dev-config.yml
 
-welcome_message: "Hello from Dockerized Flask App"
+    welcome_message: "Hello from Dockerized Flask App"
 
-curl http://0.0.0.0:5000/v1/test-config.yml
+    curl http://0.0.0.0:5000/v1/test-config.yml
 
-welcome_message: "Hello from Dockerized Flask App Test"
+    welcome_message: "Hello from Dockerized Flask App Test"
 JSON Type Example
 
-curl http://0.0.0.0:5000/v1/dev-config.json
-{
-    "welcome_message": "Hello from Dockerized Flask App"
-}
+    curl http://0.0.0.0:5000/v1/dev-config.json
+    {
+        "welcome_message": "Hello from Dockerized Flask App"
+    }
 
-curl http://0.0.0.0:5000/v1/test-config.json
-{
-    "welcome_message": "Hello from Dockerized Flask App Test"
-}
+    curl http://0.0.0.0:5000/v1/test-config.json
+    {
+        "welcome_message": "Hello from Dockerized Flask App Test"
+    }
 If you commit any changes to the [config repo], the above responses should return the latest changes.
 
 Your application should take the Github repo URL as a command line argument.
 Running your app without Docker
 
-$python app.py https://github.com/sithu/assignment1-config-example
+    $python app.py https://github.com/sithu/assignment1-config-example
 
 Update your Dockerfile from I.[5] step so that you can pass a GitHub repo URL from docker run command.
 
-docker run -d -p 5000:5000 assignment1-flask-app https://github.com/sithu/assignment1-config-example
+    docker run -d -p 5000:5000 assignment1-flask-app https://github.com/sithu/assignment1-config-example
