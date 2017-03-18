@@ -26,8 +26,10 @@ def get_config_file(filename):
 
 		else:
 			d = json.loads(decodedContent)
+			finalString="{<br/>"
 			for keys,values in d.items():
 				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
+			finalString=str(finalString)+"}"
 
 	except:
 		finalString = "Can not find the file or Repository" 
