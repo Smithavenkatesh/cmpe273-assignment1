@@ -17,19 +17,23 @@ def get_config_file(filename):
 	try:
 		repo = Github().get_user(username).get_repo(given_repo)
 		decodedContent = base64.b64decode(repo.get_contents(filename).content)
+		#print decodedContent
 		finalString=""
 
 		if(filename.endswith(".yml")):
-			d = yaml.load(decodedContent)#converts the string decodedContent to Dictionary d
-			for keys,values in d.items():
-				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
+			#d = yaml.load(decodedContent)#converts the string decodedContent to Dictionary d
+			#for keys,values in d.items():
+			#	finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
+			finalString= decodedContent
 
 		else:
-			d = json.loads(decodedContent)
-			finalString="{<br/>"
-			for keys,values in d.items():
-				finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
-			finalString=str(finalString)+"}"
+			#d = json.loads(decodedContent)
+			#finalString="{<br/>"
+			#for keys,values in d.items():
+			#	finalString = str(finalString)+str(keys)+" - "+str(values)+"<br/>"
+			#finalString=str(finalString)+"}"
+			finalString = decodedContent
+			
 
 	except:
 		finalString = "Can not find the file or Repository" 
@@ -38,18 +42,3 @@ def get_config_file(filename):
 	
 if __name__ == "__main__":
 	   app.run(debug=True,host='0.0.0.0')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
